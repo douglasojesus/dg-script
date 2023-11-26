@@ -7,6 +7,7 @@ try:
 except ImportError:
     CHAVE_API_OPENWEATHERMAP = None
 
+
 def showDep():
     print("""
     Python:
@@ -153,3 +154,50 @@ def copy(command):
     except subprocess.CalledProcessError as e:
         print(f"dg answers you: erro ao executar o comando: {e}")
 
+def todo(command):
+    try:
+        with open('todo_list.txt', 'r+') as arquivo:
+            todo_dict = eval(arquivo.read())
+            if command[0] == "add":
+                result_string = " ".join(command[1:])
+                todo_dict[result_string] = "Não Feito"
+                arquivo.truncate()
+                arquivo.write(str(todo_dict))
+            elif command[0] == "list":
+                if len(command) > 1 and command[1] == "all":
+                    for i, k in enumerate(todo_dict):
+                        print(i, k)
+                else:
+                    for i, k in enumerate(todo_dict):
+                        print("entrei")
+                        print(todo_dict)
+                        if k == "Não Feito":
+                            print(i, k)
+            elif command[0] == "del":
+                result_string = " ".join(command[1:])
+                todo_dict[result_string] = "Feito"
+            else:
+                print("nenhum comando adicionado.")
+            
+    except FileNotFoundError:
+        print("o arquivo não existe. criando um novo arquivo.")
+        with open('todo_list.txt', 'w+') as arquivo:
+            todo_dict = dict()
+            if command[0] == "add":
+                result_string = " ".join(command[1:])
+                todo_dict[result_string] = "Não Feito"
+            elif command[0] == "list":
+                if len(command) > 1 and command[1] == "all":
+                    for i, k in enumerate(todo_dict):
+                        print(i, k)
+                else:
+                    for i, k in enumerate(todo_dict):
+                        if k == "Não Feito":
+                            print(i, k)
+            elif command[0] == "del":
+                result_string = " ".join(command[1:])
+                todo_dict[result_string] = "Feito"
+            else:
+                print("nenhum comando adicionado.")
+            arquivo.write(str(todo_dict))
+        

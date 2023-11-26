@@ -23,6 +23,9 @@ try:
         # Não pega os argumentos 'dg' e 'copy'
         command_to_run = sys.argv[2:]
         copy(command_to_run)
+    elif len(sys.argv) > 1 and sys.argv[1] == "todo":
+        command_to_run = sys.argv[2:]
+        todo(command_to_run)
     else:
         help()
 except Exception as e:
