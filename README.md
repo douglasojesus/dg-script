@@ -6,11 +6,11 @@ Este script em Bash é uma ferramenta versátil projetada para simplificar vári
 
 Comandos atuais (seguidos do 'dg'):
 
--help: retorna lista de comandos executáveis;
--help_commands: mostra os comandos mais utilizados no terminal;
--print: seleciona área para print screen e copia para Área de Transferência;
--code: abre diretório atual com Visual Studio Code;
--w: mostra diretório, tempo, data e temperatura em FSA atual;
+- help: retorna lista de comandos executáveis;
+- help_commands: mostra os comandos mais utilizados no terminal;
+- print: seleciona área para print screen e copia para Área de Transferência;
+- code: abre diretório atual com Visual Studio Code;
+- w: mostra diretório, tempo, data e temperatura em FSA atual;
 
 Para o comando "dg w", é necessário que você configure sua chave API no arquivo dg-script/src/funcs na função whereAmI() (Para criar: https://openweathermap.org/api).
 
