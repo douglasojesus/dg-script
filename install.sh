@@ -9,20 +9,20 @@ read nome_do_usuario
 
 # Definir a pasta home e o caminho do diretório do script
 pasta_home="/home/$nome_do_usuario"
-novo_caminho="$pasta_home/$script_dir"
+novo_caminho="$pasta_home/$script_dir/src"
 
 # Move o diretório atual para o novo caminho
 mv "$script_dir" "$pasta_home"
 
 # Adicionar o diretório ao PATH
-echo "export PATH=\$PATH:$novo_caminho" >> ~/.bashrc
+echo "export PATH=\$PATH:$novo_caminho/src" >> ~/.bashrc
 
 source ~/.bashrc
 
 # Criar um link simbólico em /usr/local/bin/
-ln -s "$novo_caminho/exe.py" /usr/local/bin/exe
+ln -s "$novo_caminho/src/exe.py" /usr/local/bin/exe
 
 # Dar permissão de execução ao script Python
-chmod +x "$novo_caminho/exe.py"
+chmod +x "$novo_caminho/src/exe.py"
 
 echo "Instalação concluída com sucesso!"
