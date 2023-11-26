@@ -25,6 +25,7 @@ def obter_dados_meteorologicos(cidade, chave_api):
 
 if __name__ == "__main__":
     # Lembre de colocar sua chave API aqui (Para criar: https://openweathermap.org/api)
+    # Cuidado para não expor no GitHub hahaha
     SUA_CHAVE_API = CHAVE_API_OPENWEATHERMAP
     temperatura, sensacao_termica = obter_dados_meteorologicos('Feira de Santana', SUA_CHAVE_API)
     if temperatura is not None and sensacao_termica is not None:
