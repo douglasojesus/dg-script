@@ -2,6 +2,7 @@ import subprocess
 import os
 from datetime import datetime, date
 from request import obter_dados_meteorologicos
+from config import CHAVE_API_OPENWEATHERMAP
 
 def help():
     print("""Comandos executáveis:
@@ -106,7 +107,10 @@ def whereAmI():
     current_time = current_time.strftime("%H:%M:%S")
     today = date.today()
     today = today.strftime("%d/%m/%Y")
-    temperatura, sensacao_termica = obter_dados_meteorologicos('Feira de Santana', "80b6b3e1f1e31beb65a86991eae3c3d0")
+    # Lembre de colocar sua chave API aqui (Para criar: https://openweathermap.org/api)
+    # Cuidado para não expor no GitHub hahaha
+    SUA_CHAVE_API = CHAVE_API_OPENWEATHERMAP
+    temperatura, sensacao_termica = obter_dados_meteorologicos('Feira de Santana', SUA_CHAVE_API)
     if temperatura is not None and sensacao_termica is not None:
         temp_data = f"{temperatura-273.15:.2f}°C - thermal sensation: {sensacao_termica-273.15:.2f}°C"
     else:
