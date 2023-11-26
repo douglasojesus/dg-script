@@ -1,4 +1,5 @@
 import requests
+from config import CHAVE_API_OPENWEATHERMAP
 
 def obter_dados_meteorologicos(cidade, chave_api):
     # URL da API do OpenWeatherMap
@@ -23,7 +24,9 @@ def obter_dados_meteorologicos(cidade, chave_api):
         return None, None
 
 if __name__ == "__main__":
-    temperatura, sensacao_termica = obter_dados_meteorologicos('Feira de Santana', "80b6b3e1f1e31beb65a86991eae3c3d0")
+    # Lembre de colocar sua chave API aqui (Para criar: https://openweathermap.org/api)
+    SUA_CHAVE_API = CHAVE_API_OPENWEATHERMAP
+    temperatura, sensacao_termica = obter_dados_meteorologicos('Feira de Santana', SUA_CHAVE_API)
     if temperatura is not None and sensacao_termica is not None:
         temp_data = f"Temperatura em Feira de Santana: {temperatura}°C\n" + f"Sensação térmica: {sensacao_termica}°C"
     else:
