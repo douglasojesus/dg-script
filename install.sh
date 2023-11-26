@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Função principal
 instalar_script() {
     
     # Caminho atual do diretório
