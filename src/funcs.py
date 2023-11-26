@@ -83,10 +83,12 @@ você pode consultar o manual usando "man nome_do_comando".
     """)
 
 def screenshot():
+    subprocess.run(["xdotool", "getactivewindow", "windowminimize"])
     #Para registrar print selecionando área e copiando para Área de Transferência
     resultado = subprocess.run(["gnome-screenshot", "-ac"], capture_output=True, text=True)
     #Se houver saída, usar resultado.stdout
     #resultado.returncode mostra se foi feito com sucesso (0) ou não
+    os.system("wmctrl -a :ACTIVE:")
     if resultado.returncode == 0:
         print("Screenshot realizado!")
     else:
