@@ -34,10 +34,10 @@ instalar_script() {
     source ~/.bashrc
 
     # Criar um link simbólico em /usr/local/bin/
-    ln -s "$novo_caminho/src/exe.py" /usr/local/bin/exe
+    ln -s "$novo_caminho/src/dg.py" /usr/local/bin/dg
 
     # Dar permissão de execução ao script Python
-    chmod +x "$novo_caminho/src/exe.py"
+    chmod +x "$novo_caminho/src/dg.py"
 
     echo "Instalação concluída com sucesso!"
 }

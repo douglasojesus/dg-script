@@ -39,5 +39,5 @@ Em seguida, recarregue o perfil: source ~/.bashrc
 
 Passo 4: criar o link simbólico.
 Finalmente, crie um link simbólico em um diretório que já está no 
-seu PATH, como /usr/local/bin/: ln -s /home/doug/Exec/exe.py /usr/local/bin/exe
+seu PATH, como /usr/local/bin/: ln -s /home/doug/DGScript/src/dg.py /usr/local/bin/dg
 """
