@@ -8,7 +8,7 @@ Comandos atuais (seguidos do 'dg'):
 
 - help: retorna lista de comandos executáveis;
 - help_commands: mostra os comandos mais utilizados no terminal;
-- print: seleciona área para print screen e copia para Área de Transferência;
+- print: seleciona área para screenshot e copia para Área de Transferência (minimiza terminal);
 - code: abre diretório atual com Visual Studio Code;
 - w: mostra diretório, tempo, data e temperatura em FSA atual;
 
