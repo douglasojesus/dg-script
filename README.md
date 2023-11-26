@@ -17,14 +17,13 @@ Comandos atuais (seguidos do 'dg'):
 
 Para o comando "dg w", é necessário que você configure sua chave API no arquivo dg-script/src/funcs na função whereAmI() (Para criar: https://openweathermap.org/api).
 
-
 ## Como Rodar
 
 Siga estes simples passos para começar a usar o DG-Script:
 
 ### 1. Instale as dependências
 
-$ sudo apt-get install xdotool wmctrl
+$ sudo apt-get install xdotool wmctrl gnome-screenshot xclip
 
 ### 2. Clone o repositório
 

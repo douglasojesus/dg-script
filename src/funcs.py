@@ -2,15 +2,17 @@ import subprocess
 import os
 from datetime import datetime, date
 from request import obter_dados_meteorologicos
-from config import CHAVE_API_OPENWEATHERMAP
-
+try:
+    from config import CHAVE_API_OPENWEATHERMAP
+except ImportError:
+    CHAVE_API_OPENWEATHERMAP = None
 
 def showDep():
     print("""
     Python:
         subprocess, os, sys, datetime, request
     Shell:
-        sudo apt-get install xdotool wmctrl
+        sudo apt-get install xdotool wmctrl gnome-screenshot xclip
     API:
         src/funcs.whereAmI SUA_CHAVE_API https://openweathermap.org/api
     """)
@@ -21,11 +23,12 @@ def help():
     help: retorna lista de comandos executáveis;
     help_commands: mostra os comandos mais utilizados no terminal;
     print: seleciona área para screenshot e copia para Área de Transferência (minimiza terminal);
-    code: abre diretório atual com Visual Studio Code;
+    code*: abre diretório atual com Visual Studio Code;
     w: mostra diretório, tempo, data e temperatura em FSA atual;
-    copy + command*: copia o resultado do comando para Área de Transferência e exibe no terminal;
-          
-    *command: precisa ser o comando completo, não atalho (por ex: 'dg copy ls -l', não 'dg copy ll')
+    copy + command**: copia o resultado do comando para Área de Transferência e exibe no terminal;
+
+    *executa através do flatpak;     
+    **command: precisa ser o comando completo, não atalho (por ex: 'dg copy ls -l', não 'dg copy ll').
     """)
 
 def help_commands():
@@ -124,11 +127,11 @@ def whereAmI():
     # Lembre de colocar sua chave API aqui (Para criar: https://openweathermap.org/api)
     # Cuidado para não expor no GitHub hahaha
     SUA_CHAVE_API = CHAVE_API_OPENWEATHERMAP
-    temperatura, sensacao_termica = obter_dados_meteorologicos('Feira de Santana', SUA_CHAVE_API)
+    temperatura, sensacao_termica, resposta_status = obter_dados_meteorologicos('Feira de Santana', SUA_CHAVE_API)
     if temperatura is not None and sensacao_termica is not None:
         temp_data = f"{temperatura-273.15:.2f}°C - thermal sensation: {sensacao_termica-273.15:.2f}°C"
     else:
-        temp_data = "Não foi possível obter os dados meteorológicos."
+        temp_data = f"não foi possível obter os dados meteorológicos (verifique sua chave API): {resposta_status}"
 
     print(f"""
     where are you now: {current_directory}
