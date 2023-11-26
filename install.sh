@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Instalação de dependências
-instalar_dependencias() {
-    sudo apt-get install xdotool wmctrl
-}
-
 # Função principal
 instalar_script() {
     # Obtém o diretório atual do script
@@ -23,7 +18,5 @@ instalar_script() {
     echo "Instalação concluída com sucesso!"
 }
 
-# Executar instalação de dependências
-instalar_dependencias
 # Executar a função principal
 instalar_script

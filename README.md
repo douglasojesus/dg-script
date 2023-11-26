@@ -8,16 +8,20 @@ Este script em Bash é uma ferramenta versátil projetada para simplificar vári
 
 Siga estes simples passos para começar a usar o DG-Script:
 
-### 1. Clone o Repositório
+### 1. Instale as dependências
+
+$ sudo apt-get install xdotool wmctrl
+
+### 2. Clone o Repositório
 
 $ git clone https://github.com/douglasojesus/dg-script
 
-### 2. Torne o Script "install.sh" Executável
+### 3. Torne o Script "install.sh" Executável
 
 $ cd dg-script
 
 $ chmod +x install.sh
 
-### 3. Execute o Script Dentro do Diretório
+### 4. Execute o Script Dentro do Diretório
 
 $ source install.sh
