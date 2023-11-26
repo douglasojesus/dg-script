@@ -13,7 +13,7 @@ Comandos atuais (seguidos do 'dg'):
 - w: mostra diretório, tempo, data e temperatura em FSA atual;
 - copy + command**: copia o resultado do comando para Área de Transferência e exibe no terminal;
 
-*executa através do flatpak (flatpak run com.visualstudio.code");     
+*executa através do flatpak (flatpak run com.visualstudio.code);     
 **command: precisa ser o comando completo, não atalho (por ex: 'dg copy ls -l', não 'dg copy ll').
 
 Para o comando "dg w", é necessário que você configure sua chave API no arquivo dg-script/src/funcs na função whereAmI() (Para criar: https://openweathermap.org/api).
