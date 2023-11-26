@@ -13,10 +13,20 @@ try:
                 "help_commands": help_commands,
                 "print": screenshot,
                 "code": vscode,
-                "w": whereAmI}
-    commands[argumento]() if argumento in commands else help()
-except:
-    help()
+                "w": whereAmI,
+                "dep": showDep,
+                }
+    if argumento in commands:
+        commands[argumento]() 
+    # Se o comando for "copy", ele irá executar a instrução depois de copy e copiar o resultado.
+    elif len(sys.argv) > 1 and sys.argv[1] == "copy":
+        # Não pega os argumentos 'dg' e 'copy'
+        command_to_run = sys.argv[2:]
+        copy(command_to_run)
+    else:
+        help()
+except Exception as e:
+    print(e)
 
 """
 How to build in Linux Mint:
@@ -41,3 +51,5 @@ Passo 4: criar o link simbólico.
 Finalmente, crie um link simbólico em um diretório que já está no 
 seu PATH, como /usr/local/bin/: ln -s /home/doug/dg-script/src/dg.py /usr/local/bin/dg
 """
+
+

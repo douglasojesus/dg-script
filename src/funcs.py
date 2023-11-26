@@ -4,6 +4,17 @@ from datetime import datetime, date
 from request import obter_dados_meteorologicos
 from config import CHAVE_API_OPENWEATHERMAP
 
+
+def showDep():
+    print("""
+    Python:
+        subprocess, os, sys, datetime, request
+    Shell:
+        sudo apt-get install xdotool wmctrl
+    API:
+        src/funcs.whereAmI SUA_CHAVE_API https://openweathermap.org/api
+    """)
+
 def help():
     print("""Comandos executáveis:
     
@@ -12,6 +23,9 @@ def help():
     print: seleciona área para screenshot e copia para Área de Transferência (minimiza terminal);
     code: abre diretório atual com Visual Studio Code;
     w: mostra diretório, tempo, data e temperatura em FSA atual;
+    copy + command*: copia o resultado do comando para Área de Transferência e exibe no terminal;
+          
+    *command: precisa ser o comando completo, não atalho (por ex: 'dg copy ls -l', não 'dg copy ll')
     """)
 
 def help_commands():
@@ -91,7 +105,7 @@ def screenshot():
     #resultado.returncode mostra se foi feito com sucesso (0) ou não
     os.system("wmctrl -a :ACTIVE:")
     if resultado.returncode == 0:
-        print("Screenshot realizado!")
+        print("dg answers you: screenshot realizado e copiado para área de transferência.")
     else:
         print("Houve erro no comando. Mensagem: ", resultado.returncode)
     
@@ -122,3 +136,17 @@ def whereAmI():
     what date is it: {today}
     what about the temperature in FSA: {temp_data}
 """)
+    
+def copy(command):
+    try:
+        # Execute o processo e capture a saída
+        resultado = subprocess.run(command, capture_output=True, text=True)
+        print(resultado.stdout, end="")
+        # Converta a saída para bytes
+        output_bytes = resultado.stdout.encode("utf-8")
+        # Usando o script xclip para copiar a saída do comando anterior (output) para input.
+        subprocess.run(["xclip", "-selection", "clipboard"], input=output_bytes)
+        print("dg answers you: saída do comando copiada para a área de transferência.")
+    except subprocess.CalledProcessError as e:
+        print(f"dg answers you: erro ao executar o comando: {e}")
+
