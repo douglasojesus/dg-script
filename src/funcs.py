@@ -36,7 +36,7 @@ def help_commands():
     print("""Navegação no Sistema de Arquivos:
 
     cd: Muda o diretório atual.
-    ls: Lista os arquivos e diretórios no diretório atual.
+    ls: Lista os arquivos e diretórios no diretório atual (o *.extensao permite selecionar todos arquivos que só tem essa extensão).
     pwd: Mostra o caminho do diretório atual.
     find: Busca arquivo (find diretorio/inicio -name "nome_arquivo.txt").
     locate: Busca arquivo (locate "nome_arq.txt") em banco (para atualizar banco: sudo updatedb).
@@ -96,6 +96,12 @@ Informações de Hardware:
     lscpu: Exibe informações sobre a CPU.
     lshw: Lista detalhes de hardware.
     free -m: Exibe informações sobre o uso da memória.
+          
+Comandos adicionais:
+          
+    head file: permite ver as 10 primeiras linhas de um arquivo (flag depois do head especifica quantidade de linhas);
+    sort: lê linhas do terminal, ordena e imprime. Os chars < e > podem ser usados para definir entrada e saída.
+    wc: contador de palavras. Flag -l permite filtrar por linhas.
 
 Para obter informações detalhadas sobre qualquer comando, 
 você pode consultar o manual usando "man nome_do_comando". 
